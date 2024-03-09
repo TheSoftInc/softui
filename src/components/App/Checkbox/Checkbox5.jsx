@@ -3,7 +3,8 @@ import CodeBox from "../../../Shared/CodeBox/CodeBox";
 const Checkbox5 = () => {
   return (
     <div>
-      <CodeBox stringCode={`
+      <CodeBox
+        stringCode={`
       <div className="w-80 rounded-2xl  backdrop-blur-lg bg-white/10">
       <div className="flex flex-col gap-2 p-8">
         <input
@@ -35,9 +36,10 @@ const Checkbox5 = () => {
         </button>
       </div>
     </div>
-      `}>
+      `}
+      >
         <div className="flex justify-center items-center">
-          <div className="w-80 rounded-2xl backdrop-blur-lg bg-white/10">
+          <div className="w-80 rounded-2xl backdrop-blur-lg bg-black/80 dark:bg-white/10 ">
             <div className="flex flex-col gap-2 p-8">
               <input
                 className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-700 focus:ring-offset-2 focus:ring-offset-gray-800"
