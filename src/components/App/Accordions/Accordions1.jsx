@@ -82,17 +82,20 @@ export default Accordion;
 `}
         text={"Accordion Example"}
       >
-        <div className="mx-6 rounded-md border font-sans">
+        <div className="mx-6 rounded-md border border-black dark:border-white font-sans">
           {accordionsData?.map((accordion, i) => (
-            <div className="border-b p-6" key={i}>
+            <div
+              className="border-b border-b-black dark:border-b-white p-6 dark:text-white"
+              key={i}
+            >
               <button
                 onClick={() => handleToogle(i)}
-                className="flex h-full w-full justify-between py-3 items-center text-white"
+                className="flex h-full w-full justify-between py-3 items-center"
               >
                 <h2 className="text-[18px]">{accordion.title}</h2>
                 <span>
                   <svg
-                    className={`w-10 h-10 fill-white transition-all ease-in-out duration-300 ${
+                    className={`w-10 h-10 fill-gray-500 dark:fill-white transition-all ease-in-out duration-300 ${
                       accordionOpen === i ? "rotate-180" : "rotate-0"
                     }`}
                     viewBox="0 0 1792 1792"

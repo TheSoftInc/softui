@@ -3,9 +3,13 @@ import { Collapse, IconButton, Typography } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/aeroui.svg";
+import { IoMdMoon } from "react-icons/io";
+import { IoSunny } from "react-icons/io5";
 
 const Navbar = () => {
   const [openNav, setOpenNav] = useState(false);
+  const [lightTheme, setLightTheme] = useState(true);
+
   const handleWindowResize = () =>
     window.innerWidth >= 960 && setOpenNav(false);
 
@@ -18,7 +22,7 @@ const Navbar = () => {
   }, []);
   const NavList = () => {
     return (
-      <ul className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+      <ul className="my-2  flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
         <Typography
           as="li"
           variant="large"
@@ -58,6 +62,16 @@ const Navbar = () => {
             Documentation
           </Link>
         </Typography>
+        <li>
+          <div
+            className={`p-2 rounded-md ${
+              lightTheme ? "text-white" : "text-gray-500"
+            } `}
+            onClick={() => setLightTheme(!lightTheme)}
+          >
+            {lightTheme ? <IoMdMoon /> : <IoSunny />}
+          </div>
+        </li>
       </ul>
     );
   };

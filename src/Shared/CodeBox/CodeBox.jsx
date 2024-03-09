@@ -6,6 +6,8 @@ import { FaMobileAlt } from "react-icons/fa";
 import { IoIosTabletLandscape } from "react-icons/io";
 import { IoMdLaptop } from "react-icons/io";
 import { FiMonitor } from "react-icons/fi";
+import { IoMdMoon } from "react-icons/io";
+import { IoSunny } from "react-icons/io5";
 import JSXCode from "../JSXCode/JSXCode";
 import Preview from "../PreviewBox/Preview";
 
@@ -21,6 +23,7 @@ const CodeBox = ({ children, stringCode, text }) => {
   const [isCopied, setIsCopied] = useState(false);
   const [isCodeBoxOpen, setIsCodeBoxOpen] = useState(false);
   const [selectedDevice, setSelectedDevice] = useState("w-full h-full");
+  const [lightTheme, setLightTheme] = useState(true);
   const handleCopy = () => {
     setIsCopied(true);
     setTimeout(() => {
@@ -56,7 +59,7 @@ const CodeBox = ({ children, stringCode, text }) => {
                 </button>
               ))}
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center pr-2">
               <div className="flex ">
                 {isCodeBoxOpen ? (
                   <div className="">
@@ -89,7 +92,7 @@ const CodeBox = ({ children, stringCode, text }) => {
                 )}
               </div>
               <CopyToClipboard text={stringCode} onCopy={handleCopy}>
-                <button className="copy-button px-2    text-white">
+                <button className="copy-button relative group px-2    text-white">
                   {isCopied ? (
                     <div className="flex items-center gap-x-2 border py-[5px] px-3 rounded-md hover:bg-white/20">
                       <svg
@@ -151,8 +154,33 @@ const CodeBox = ({ children, stringCode, text }) => {
                       </div>
                     </div>
                   )}
+                  <div
+                    id="tooltip-animation"
+                    role="tooltip"
+                    className="absolute invisible group-hover:visible opacity-0 group-hover:opacity-100 whitespace-nowrap top-[-50px] left-[-50px] inline-block px-3 py-2 text-sm font-medium text-dark transition-all duration-300 bg-gray-900 rounded-lg shadow-sm tooltip dark:bg-gray-700"
+                  >
+                    <span className="absolute inner-block border-[8px] -translate-x-1/2 left-1/2 bottom-[-20%] border-l-transparent border-r-transparent border-b-0 border-t-gray-900"></span>
+                    Toggle dark mode
+                  </div>
                 </button>
               </CopyToClipboard>
+              <button
+                type="button"
+                data-tooltip-target="tooltip-animation"
+                className="group p-2 rounded-md border text-white relative"
+                onClick={() => setLightTheme(!lightTheme)}
+              >
+                <div
+                  id="tooltip-animation"
+                  role="tooltip"
+                  className="absolute invisible group-hover:visible opacity-0 group-hover:opacity-100 whitespace-nowrap top-[-50px] left-[-50px] inline-block px-3 py-2 text-sm font-medium text-dark transition-all duration-300 bg-gray-900 rounded-lg shadow-sm tooltip dark:bg-gray-700"
+                >
+                  <span className="absolute inner-block border-[8px] -translate-x-1/2 left-1/2 bottom-[-20%] border-l-transparent border-r-transparent border-b-0 border-t-gray-900"></span>
+                  Toggle dark mode
+                </div>
+
+                {lightTheme ? <IoMdMoon /> : <IoSunny />}
+              </button>
             </div>
           </div>
           <div
@@ -167,7 +195,7 @@ const CodeBox = ({ children, stringCode, text }) => {
               </div>
             ) : (
               <div className={`${selectedDevice} mx-auto`}>
-                <Preview>{children}</Preview>
+                <Preview theme={lightTheme}>{children}</Preview>
               </div>
             )}
           </div>

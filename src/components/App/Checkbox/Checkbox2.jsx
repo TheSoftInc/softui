@@ -21,7 +21,7 @@ const Checkbox2 = () => {
        }
      
        return (
-         <label className='flex items-center cursor-pointer select-none text-white'>
+         <label className='flex items-center cursor-pointer select-none z-[1]'>
            <div className='relative'>
              <input
                type='checkbox'
@@ -29,7 +29,7 @@ const Checkbox2 = () => {
                onChange={handleCheckboxChange}
                className='sr-only'
              />
-             <div className='box mr-4 flex h-5 w-5 items-center justify-center rounded border-stroke border'>
+             <div className='box mr-4 flex h-5 w-5 items-center justify-center rounded border-stroke border border-gray-700 dark:border-white'>
                <span className={"dot h-[10px] w-[10px] rounded-sm " + (isChecked ? 'bg-blue-500' : '')}></span>
              </div>
            </div>
@@ -41,7 +41,7 @@ const Checkbox2 = () => {
       `}
       >
         <div className="flex justify-center items-center">
-          <label className="flex items-center cursor-pointer select-none text-white ">
+          <label className="flex items-center cursor-pointer select-none text-gray-700 dark:text-white">
             <div className="relative">
               <input
                 type="checkbox"
@@ -49,7 +49,7 @@ const Checkbox2 = () => {
                 onChange={handleCheckboxChange}
                 className="sr-only"
               />
-              <div className="box mr-4 flex h-5 w-5 items-center justify-center rounded border-stroke border">
+              <div className="box mr-4 flex h-5 w-5 items-center justify-center rounded border-stroke border border-gray-700 dark:border-white">
                 <span
                   className={`dot h-[10px] w-[10px] rounded-sm ${
                     isChecked && "bg-blue-500"
